@@ -4,11 +4,11 @@ package xenonraite.ua.graphbuilder.model;
 /**
  * Created by Sontik on 08.12.2015.
  */
-public class Langraje {
+public class Lagranje {
 
 
 
-    public static float formulaLangraje(float x, float[] x_array, float[] y_array){
+    public static float formulaLagraje(float x, float[] x_array, float[] y_array){
         int size = x_array.length;
         float sum = 0;
         for(int i = 0; i < size; i++){

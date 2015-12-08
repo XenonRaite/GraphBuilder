@@ -11,7 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import xenonraite.ua.graphbuilder.model.GraphData;
-import xenonraite.ua.graphbuilder.model.Langraje;
+import xenonraite.ua.graphbuilder.model.Lagranje;
 import xenonraite.ua.graphbuilder.model.tasks.TaskMNK;
 
 /**
@@ -190,6 +190,17 @@ public class GraphicView extends View {
             dravPointOfGraph(canvas,x_period*(k+1)+margin,y_pix_min+ y_period* GraphData.getInstance().getPointData(k),GraphData.getInstance().getPointData(k));
         }
 
+        //tips
+        Paint textTips = new Paint();
+        textTips.setTextSize(25);
+        //mnk
+        textTips.setColor(Color.RED);
+        canvas.drawText("МНК",x_pix_max - 100,40,textTips);
+
+        //lagranje
+        textTips.setColor(0xFFffa500);
+        canvas.drawText("Лагранжа",x_pix_max - 100,80,textTips);
+
         //draw result
         if(MNKresult != null){
             Log.d("TEST", "Draw result");
@@ -230,7 +241,7 @@ public class GraphicView extends View {
             canvas.drawPath(pathMNK, lineMNK);
 
 
-            //and draw langranje
+            //and draw lagranje
 
             float[] xArray= new float[X_MAX-1];
             for(int i = 0;i<xArray.length;i++){
@@ -245,11 +256,11 @@ public class GraphicView extends View {
 
                 if(isFirst){
                     isFirst= false;
-                    pathLagranje.moveTo(point*x_period+margin,y_pix_min + Langraje.formulaLangraje(point,xArray,GraphData.getInstance().getData())*y_period);
-                    canvas.drawPoint(point*x_period+margin,y_pix_min + Langraje.formulaLangraje(point,xArray,GraphData.getInstance().getData())*y_period, dots);
+                    pathLagranje.moveTo(point*x_period+margin,y_pix_min + Lagranje.formulaLagraje(point, xArray, GraphData.getInstance().getData())*y_period);
+                    canvas.drawPoint(point*x_period+margin,y_pix_min + Lagranje.formulaLagraje(point, xArray, GraphData.getInstance().getData())*y_period, dots);
                 }else{
-                    pathLagranje.lineTo(point*x_period+margin,y_pix_min +Langraje.formulaLangraje(point,xArray,GraphData.getInstance().getData())*y_period);
-                    canvas.drawPoint(point*x_period+margin,y_pix_min + Langraje.formulaLangraje(point,xArray,GraphData.getInstance().getData())*y_period, dots);
+                    pathLagranje.lineTo(point*x_period+margin,y_pix_min + Lagranje.formulaLagraje(point, xArray, GraphData.getInstance().getData())*y_period);
+                    canvas.drawPoint(point*x_period+margin,y_pix_min + Lagranje.formulaLagraje(point, xArray, GraphData.getInstance().getData())*y_period, dots);
                 }
 
             }
